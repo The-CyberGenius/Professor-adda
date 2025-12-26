@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Premium NET JRF Notes - PDF & Hard Copy Notes crafted by expert professors">
+    
+    <!-- Title & Favicon -->
+    <title>Professor Adda - Premium NET JRF Notes</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- External CSS Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- External JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <custom-navbar></custom-navbar>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-r from-blue-600 to-purple-700 text-white py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-5xl font-bold mb-6 animate-pulse">Master NET JRF with Professor Adda</h1>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Premium PDF & Hard Copy Notes crafted by expert professors</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#notes" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition duration-300 shadow-lg">
+                    Explore Notes
+                </a>
+                <button onclick="openWhatsApp()" class="bg-green-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-600 transition duration-300 shadow-lg flex items-center justify-center gap-2">
+                    <i data-feather="message-circle"></i>
+                    Connect on WhatsApp
+                </button>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-gray-50 to-transparent"></div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Why Choose Professor Adda?</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center p-6 bg-blue-50 rounded-xl hover:shadow-lg transition duration-300">
+                    <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-feather="book" class="text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Expertly Crafted</h3>
+                    <p class="text-gray-600">Notes prepared by experienced professors and NET JRF qualified experts</p>
+                </div>
+                <div class="text-center p-6 bg-purple-50 rounded-xl hover:shadow-lg transition duration-300">
+                    <div class="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-feather="download" class="text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Multiple Formats</h3>
+                    <p class="text-gray-600">Available in both PDF (digital) and premium quality hard copy versions</p>
+                </div>
+                <div class="text-center p-6 bg-green-50 rounded-xl hover:shadow-lg transition duration-300">
+                    <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-feather="award" class="text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Proven Success</h3>
+                    <p class="text-gray-600">Trusted by thousands of successful NET JRF qualifiers</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sample Notes Section -->
+    <section id="notes" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Sample Notes Preview</h2>
+            <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="p-6">
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-600">Paper I - Teaching & Research Aptitude</h3>
+                    <p class="text-gray-600 mb-6">Get a glimpse of our comprehensive notes with this sample chapter covering essential topics for Paper I.</p>
+                    <div class="bg-gray-100 p-4 rounded-lg mb-6">
+                        <iframe src="/sample-notes.pdf" class="w-full h-96 rounded border" title="Sample Notes PDF"></iframe>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="downloadSample()" class="bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-600 transition duration-300 flex items-center justify-center gap-2">
+                            <i data-feather="download"></i>
+                            Download Sample PDF
+                        </button>
+                        <button onclick="openWhatsApp()" class="bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition duration-300 flex items-center justify-center gap-2">
+                            <i data-feather="shopping-cart"></i>
+                            Get Full Notes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-16 bg-gradient-to-br from-blue-500 to-purple-600 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-6">Ready to Ace NET JRF?</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Connect with us on WhatsApp to get detailed information, pricing, and place your order</p>
+            <button onclick="openWhatsApp()" class="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition duration-300 shadow-lg text-lg flex items-center justify-center gap-3 mx-auto">
+                <i data-feather="message-circle"></i>
+                Chat with Professor Adda
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <custom-footer></custom-footer>
+
+    <!-- Component Scripts -->
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+    <script src="script.js"></script>
+    
+    <!-- Initialize Feather Icons -->
+    <script>
+        // Ensure feather icons are replaced after all content loads
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof feather !== 'undefined') {
+                feather.replace();
+            }
+        });
+    </script>
+    
+    <!-- External Scripts (commented out) -->
+    <!-- <script src="https://huggingface.co/deepsite/deepsite-badge.js"></script> -->
+</body>
+</html>
