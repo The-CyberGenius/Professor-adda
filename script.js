@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function initAnimations() {
+
     // Add fade-in animation to elements on load
     const animatedElements = document.querySelectorAll('.fade-in-up');
     animatedElements.forEach((element, index) => {
