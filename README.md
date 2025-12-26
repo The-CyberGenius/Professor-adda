@@ -51,7 +51,7 @@ professor adda website/
 
 ## Contact
 
-- WhatsApp: +91 7690022111
+- WhatsApp: +91 8955256878
 - Email: contact@professordda.com
 
 ## License
