@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses & Subjects - Professor Adda</title>
+    <link rel="icon" type="image/png" href="../favicon.png">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Navbar -->
+    <custom-navbar></custom-navbar>
+
+    <!-- Hero -->
+    <section class="py-16 bg-gradient-to-r from-blue-600 to-purple-700 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">NET JRF Courses & Subjects</h1>
+            <!-- <p class="text-lg md:text-xl max-w-2xl mx-auto">
+                Choose your subject and later you can attach payment links for each course or notes package.
+            </p> -->
+        </div>
+    </section>
+
+    <!-- Courses Grid -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center"> Popular Subjects </h2>
+            <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <!-- Subject Card 1 -->
+                <div class="bg-gray-50 rounded-2xl p-6 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Paper I </h3>
+                        <p class="text-gray-600 text-sm mb-3">
+                            Complete Paper I notes with theory, practice questions and PYQs.
+                        </p>
+                        <p class="text-gray-500 text-xs">
+                            <!-- Payment link placeholder – paste your Razorpay / UPI / website link here later. -->
+                        </p>
+                    </div>
+                    <button class="mt-5 bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-blue-700 transition duration-300">
+
+                        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_RxOfRHYMKLvzBn" async> </script> </form>
+                        
+                    </button>
+                </div>
+
+                <!-- Subject Card 2 -->
+                <div class="bg-gray-50 rounded-2xl p-6 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Paper II </h3>
+                        <p class="text-gray-600 text-sm mb-3">
+                            Unit-wise concise notes for Education with diagrams and shortcuts.
+                        </p>
+                        <p class="text-gray-500 text-xs">
+                            Button below can later redirect to your payment / checkout page.
+                        </p>
+                    </div>
+                    <button class="mt-5 bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-blue-700 transition duration-300">
+                        Comming soon .. 
+                    </button>
+                </div>
+
+                <!-- Subject Card 3 -->
+                <!-- <div class="bg-gray-50 rounded-2xl p-6 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Paper II - Commerce</h3>
+                        <p class="text-gray-600 text-sm mb-3">
+                            Detailed notes for Commerce with charts, tables and summary sheets.
+                        </p>
+                        <p class="text-gray-500 text-xs">
+                            Replace this button link later with your Commerce course payment URL.
+                        </p>
+                    </div>
+                    <button class="mt-5 bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-blue-700 transition duration-300">
+                        Add Payment Link Here
+                    </button>
+                </div> -->
+
+                <!-- Subject Card 4 -->
+                <!-- <div class="bg-gray-50 rounded-2xl p-6 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Paper II - English</h3>
+                        <p class="text-gray-600 text-sm mb-3">
+                            Literary theory, criticism, and important authors in exam format.
+                        </p>
+                        <p class="text-gray-500 text-xs">
+                            Keep this as a dummy product card until you are ready with details.
+                        </p>
+                    </div>
+                    <button class="mt-5 bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-blue-700 transition duration-300">
+                        Add Payment Link Here
+                    </button>
+                </div> -->
+
+                <!-- Subject Card 5 -->
+                <!-- <div class="bg-gray-50 rounded-2xl p-6 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Paper II - Management</h3>
+                        <p class="text-gray-600 text-sm mb-3">
+                            Concepts, case studies and quick revision notes for Management.
+                        </p>
+                        <p class="text-gray-500 text-xs">
+                            Later: link this button to your Management course checkout.
+                        </p>
+                    </div>
+                    <button class="mt-5 bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-blue-700 transition duration-300">
+                        Add Payment Link Here
+                    </button>
+                </div> -->
+
+                <!-- Subject Card 6 -->
+                <!-- <div class="bg-gray-50 rounded-2xl p-6 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Custom Subject / Combo Pack</h3>
+                        <p class="text-gray-600 text-sm mb-3">
+                            Use this card for any new subject, combo offer or crash course you launch.
+                        </p>
+                        <p class="text-gray-500 text-xs">
+                            You can duplicate this card and update the title/description/pricing.
+                        </p>
+                    </div>
+                    <button class="mt-5 bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-blue-700 transition duration-300">
+                        Add Payment Link Here
+                    </button> -->
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp CTA -->
+    <section class="py-16 bg-gradient-to-br from-blue-500 to-purple-600 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-4">Need a custom course or subject?</h2>
+            <p class="text-lg mb-8 max-w-2xl mx-auto">
+                Students can message you directly for special combinations, discounts, or guidance. All contact happens on WhatsApp.
+            </p>
+            <button onclick="openWhatsApp()" class="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition duration-300 shadow-lg text-lg inline-flex items-center justify-center gap-3">
+                <i data-feather="message-circle"></i>
+                Chat on WhatsApp
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <custom-footer></custom-footer>
+
+    <!-- Scripts -->
+    <script src="../components/navbar.js"></script>
+    <script src="../components/footer.js"></script>
+    <script src="../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof feather !== 'undefined') {
+                feather.replace();
+            }
+        });
+    </script>
+</body>
+</html>
+
+

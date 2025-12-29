@@ -7,6 +7,16 @@
     box-sizing: border-box;
 }
 
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+
+custom-navbar {
+    box-sizing: content-box;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     scroll-behavior: smooth;

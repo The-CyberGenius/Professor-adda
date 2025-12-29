@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Notes - Professor Adda</title>
+    <link rel="icon" type="image/png" href="../favicon.png">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Navbar -->
+    <custom-navbar></custom-navbar>
+
+    <!-- Hero -->
+    <section class="py-16 bg-gradient-to-r from-blue-600 to-purple-700 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Sample NET JRF Notes</h1>
+            <p class="text-lg md:text-xl max-w-2xl mx-auto mb-8">
+                Preview a real chapter from our premium notes and experience the quality before you decide.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#pdf-preview" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition duration-300 shadow-lg">
+                    View Sample Notes (Scroll to PDF)
+                </a>
+                <button onclick="downloadSample()" class="bg-green-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-600 transition duration-300 shadow-lg flex items-center justify-center gap-2">
+                    <i data-feather="download"></i>
+                    Download Sample PDF
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="bg-gray-50 rounded-2xl p-8 shadow-sm">
+                <h2 class="text-2xl font-semibold text-gray-900 mb-4">
+                    What you will see in this sample
+                </h2>
+                <p class="text-gray-600 mb-4">
+                    This sample chapter is from <span class="font-semibold">Paper I - Teaching &amp; Research Aptitude</span>.
+                    It showcases our clear explanations, structured headings, memory tricks, and exam-focused coverage.
+                </p>
+                <p class="text-gray-600">
+                    Full notes include all units with theory, examples, practice questions, and smart revision points
+                    curated by experienced professors and NET JRF qualifiers.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PDF Preview (Bottom of Page) -->
+    <section id="pdf-preview" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <h2 class="text-3xl font-bold text-center mb-6 text-gray-800">
+                Sample Notes PDF Preview
+            </h2>
+            <p class="text-center text-gray-600 mb-8">
+                Scroll inside the window below to read the sample chapter. For the best experience, open it in a new tab or download it.
+            </p>
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="bg-gray-100 px-4 py-3 flex justify-between items-center">
+                    <span class="text-sm text-gray-700">
+                        Professor Adda - Sample Notes (PDF)
+                    </span>
+                    <div class="flex gap-3">
+                        <a href="../sample-notes.pdf" target="_blank" class="text-blue-600 text-sm underline">
+                            Open in new tab
+                        </a>
+                        <button onclick="downloadSample()" class="text-sm text-green-600 font-semibold">
+                            Download
+                        </button>
+                    </div>
+                </div>
+                <div class="p-4 bg-gray-100">
+                    <iframe
+                        src="../sample-notes.pdf"
+                        class="w-full h-[600px] rounded border"
+                        title="Sample Notes PDF">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 bg-gradient-to-br from-blue-500 to-purple-600 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-4">Liked the sample?</h2>
+            <p class="text-lg mb-8 max-w-2xl mx-auto">
+                Message us on WhatsApp to get full notes in PDF or hard copy with complete guidance for NET JRF.
+            </p>
+            <button onclick="openWhatsApp()" class="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition duration-300 shadow-lg text-lg inline-flex items-center justify-center gap-3">
+                <i data-feather="message-circle"></i>
+                Get Full Notes on WhatsApp
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <custom-footer></custom-footer>
+
+    <!-- Scripts -->
+    <script src="../components/navbar.js"></script>
+    <script src="../components/footer.js"></script>
+    <script src="../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof feather !== 'undefined') {
+                feather.replace();
+            }
+        });
+    </script>
+</body>
+</html>
+
+

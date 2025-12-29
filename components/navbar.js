@@ -126,37 +126,42 @@ class CustomNavbar extends HTMLElement {
                     color: #3b82f6;
                 }
                 .mobile-menu {
-                    transition: all 0.3s ease;
-                    transform: translateX(-100%);
+                    position: fixed;
+                    inset: 0;
+                    z-index: 50;
+                    display: flex;
+                    pointer-events: none;
+                    opacity: 0;
+                    transition: opacity 0.25s ease;
                 }
                 .mobile-menu.open {
+                    opacity: 1;
+                    pointer-events: auto;
+                }
+                .mobile-menu-overlay {
+                    flex: 1;
+                    background: rgba(15, 23, 42, 0.5);
+                }
+                .mobile-menu-panel {
+                    width: 80%;
+                    max-width: 320px;
+                    height: 100%;
+                    background: white;
+                    padding: 1.5rem;
+                    box-shadow: -10px 0 25px rgba(15, 23, 42, 0.35);
+                    transform: translateX(100%);
+                    transition: transform 0.25s ease;
+                }
+                .mobile-menu.open .mobile-menu-panel {
                     transform: translateX(0);
                 }
                 @media (max-width: 768px) {
-                    .navbar {
-                        padding: 0.5rem 0.9rem;
-                        backdrop-filter: blur(10px);
-                    }
-                    .navbar-inner {
-                        width: 100%;
-                        max-width: none;
-                        padding: 0.55rem 0.9rem;
-                        border-radius: 1rem;
-                        background: #ffffff;
-                        box-shadow: 0 6px 16px rgba(15, 23, 42, 0.16);
-                    }
-                    .nav-link {
-                        color: #374151;
-                    }
-                    .nav-link::after {
-                        background: #3b82f6;
-                    }
+                    /* Keep same gradient style on mobile, only change layout */
                     .desktop-menu {
                         display: none !important;
                     }
                     .mobile-menu-btn {
                         display: block;
-                        color: #374151;
                     }
                 }
             </style>
@@ -170,8 +175,9 @@ class CustomNavbar extends HTMLElement {
 
                     <!-- Desktop Menu -->
                     <div class="desktop-menu" style="display: flex; align-items: center; gap: 2rem;">
-                        <a href="#notes" class="nav-link">Sample Notes</a>
-                        <a href="#" class="nav-link">Courses</a>
+                        <a href="/pages/sample-notes.html" class="nav-link">Sample Notes</a>
+                        <a href="/pages/faq.html" class="nav-link">FAQ</a>
+                        <a href="/pages/courses.html" class="nav-link">Courses</a>
                         <a href="#" class="nav-link">Testimonials</a>
                         <button onclick="openWhatsApp()" class="contact-btn">
                             <i data-feather="message-circle" style="width: 18px; height: 18px;"></i>
@@ -185,9 +191,10 @@ class CustomNavbar extends HTMLElement {
                     </button>
                 </div>
 
-                <!-- Mobile Menu -->
-                <div class="mobile-menu" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 50;">
-                    <div style="padding: 1.5rem;">
+                <!-- Mobile Menu as Sidebar -->
+                <div class="mobile-menu">
+                    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+                    <div class="mobile-menu-panel">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
                             <a href="/" class="logo-link">
                                 <div class="logo-circle logo-circle-small"></div>
@@ -198,8 +205,9 @@ class CustomNavbar extends HTMLElement {
                             </button>
                         </div>
                         <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-                            <a href="#notes" class="nav-link" style="display: block; font-size: 1.125rem;">Sample Notes</a>
-                            <a href="#" class="nav-link" style="display: block; font-size: 1.125rem;">Courses</a>
+                            <a href="/pages/sample-notes.html" class="nav-link" style="display: block; font-size: 1.125rem;">Sample Notes</a>
+                            <a href="/pages/faq.html" class="nav-link" style="display: block; font-size: 1.125rem;">FAQ</a>
+                            <a href="/pages/courses.html" class="nav-link" style="display: block; font-size: 1.125rem;">Courses</a>
                             <a href="#" class="nav-link" style="display: block; font-size: 1.125rem;">Testimonials</a>
                             <button onclick="openWhatsApp()" class="contact-btn" style="width: 100%; padding: 0.75rem 1rem; justify-content: center;">
                                 <i data-feather="message-circle" style="width: 18px; height: 18px;"></i>
@@ -214,6 +222,7 @@ class CustomNavbar extends HTMLElement {
                 // Mobile menu functionality
                 const mobileMenuButton = this.shadowRoot.getElementById('mobileMenuButton');
                 const closeMobileMenu = this.shadowRoot.getElementById('closeMobileMenu');
+                const mobileMenuOverlay = this.shadowRoot.getElementById('mobileMenuOverlay');
                 const mobileMenu = this.shadowRoot.querySelector('.mobile-menu');
 
                 mobileMenuButton.addEventListener('click', () => {
@@ -222,6 +231,12 @@ class CustomNavbar extends HTMLElement {
                 });
 
                 closeMobileMenu.addEventListener('click', () => {
+                    mobileMenu.classList.remove('open');
+                    document.body.style.overflow = '';
+                });
+
+                // Close when tapping on the dark overlay
+                mobileMenuOverlay.addEventListener('click', () => {
                     mobileMenu.classList.remove('open');
                     document.body.style.overflow = '';
                 });
