@@ -11,20 +11,50 @@ class CustomNavbar extends HTMLElement {
                     z-index: 1000;
                 }
                 .navbar {
-                    background: rgba(255, 255, 255, 0.95);
-                    backdrop-filter: blur(10px);
-                    border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+                    padding: 0.75rem 1.25rem;
+                    background: transparent;
+                    backdrop-filter: blur(16px);
                     transition: all 0.3s ease;
                 }
-                .navbar.scrolled {
-                    background: rgba(255, 255, 255, 0.98);
-                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+                .navbar-inner {
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    padding: 0.6rem 1.4rem;
+                    border-radius: 999px;
+                    background: linear-gradient(90deg, #2563eb, #7c3aed);
+                    /* Subtle, darker shadow for soft depth */
+                    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.35);
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    transition: box-shadow 0.3s ease, transform 0.3s ease, background 0.3s ease;
+                }
+                .navbar.scrolled .navbar-inner {
+                    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.5);
+                    transform: translateY(-2px);
+                    background: linear-gradient(90deg, #1d4ed8, #6d28d9);
                 }
                 .logo-link {
                     text-decoration: none;
                     display: flex;
                     align-items: center;
                     gap: 0.5rem;
+                }
+                .logo-circle {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    /* Use root-relative path so it works from Shadow DOM */
+                    background-color: #b2a4d4ff;;
+                    background-image: url('/favicon.png');
+                    background-size: cover;
+                    background-position: center;
+                    box-shadow: 0 4px 12px rgba(59, 131, 246, 0.67);
+                    flex-shrink: 0;
+                }
+                .logo-circle-small {
+                    width: 32px;
+                    height: 32px;
                 }
                 .logo-text {
                     font-size: 1.25rem;
@@ -33,10 +63,14 @@ class CustomNavbar extends HTMLElement {
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
                     background-clip: text;
+                    /* Slight bump/3D effect */
+                    text-shadow:
+                        0 1px 0 rgba(255, 255, 255, 0.6),
+                        0 4px 10px rgba(15, 23, 42, 0.35);
                 }
                 .nav-link {
                     position: relative;
-                    color: #374151;
+                    color: #e5e7eb;
                     font-weight: 500;
                     text-decoration: none;
                     padding: 0.5rem 0;
@@ -44,8 +78,8 @@ class CustomNavbar extends HTMLElement {
                     display: inline-block;
                 }
                 .nav-link:hover {
-                    color: #3b82f6;
-                    transform: translateY(-2px);
+                    color: #ffffff;
+                    transform: translateY(-1px);
                 }
                 .nav-link::after {
                     content: '';
@@ -62,9 +96,9 @@ class CustomNavbar extends HTMLElement {
                     width: 100%;
                 }
                 .contact-btn {
-                    background: #10b981;
+                    background: linear-gradient(135deg, #22c55e, #16a34a);
                     color: white;
-                    padding: 0.5rem 1rem;
+                    padding: 0.55rem 1.25rem;
                     border-radius: 0.5rem;
                     font-weight: 600;
                     border: none;
@@ -76,9 +110,9 @@ class CustomNavbar extends HTMLElement {
                     text-decoration: none;
                 }
                 .contact-btn:hover {
-                    background: #059669;
-                    transform: translateY(-2px);
-                    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+                    background: linear-gradient(135deg, #22c55e, #15803d);
+                    transform: translateY(-1px);
+                    box-shadow: 0 8px 22px rgba(16, 185, 129, 0.45);
                 }
                 .mobile-menu-btn {
                     background: none;
@@ -99,65 +133,78 @@ class CustomNavbar extends HTMLElement {
                     transform: translateX(0);
                 }
                 @media (max-width: 768px) {
+                    .navbar {
+                        padding: 0.5rem 0.9rem;
+                        backdrop-filter: blur(10px);
+                    }
+                    .navbar-inner {
+                        width: 100%;
+                        max-width: none;
+                        padding: 0.55rem 0.9rem;
+                        border-radius: 1rem;
+                        background: #ffffff;
+                        box-shadow: 0 6px 16px rgba(15, 23, 42, 0.16);
+                    }
+                    .nav-link {
+                        color: #374151;
+                    }
+                    .nav-link::after {
+                        background: #3b82f6;
+                    }
                     .desktop-menu {
                         display: none !important;
                     }
                     .mobile-menu-btn {
                         display: block;
+                        color: #374151;
                     }
                 }
             </style>
             <nav class="navbar">
-                <div style="max-width: 1200px; margin: 0 auto; padding: 1rem 1.5rem;">
-                    <div style="display: flex; align-items: center; justify-content: space-between;">
-                        <!-- Logo -->
-                        <a href="/" class="logo-link">
-                            <div style="width: 40px; height: 40px; background: linear-gradient(45deg, #3b82f6, #8b5cf6); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                <i data-feather="book-open" style="color: white; width: 20px; height: 20px;"></i>
-                            </div>
-                            <span class="logo-text">Professor Adda</span>
-                        </a>
+                <div class="navbar-inner">
+                    <!-- Logo -->
+                    <a href="/" class="logo-link">
+                        <div class="logo-circle"></div>
+                        <span class="logo-text">Professor Adda</span>
+                    </a>
 
-                        <!-- Desktop Menu -->
-                        <div class="desktop-menu" style="display: flex; align-items: center; gap: 2rem;">
-                            <a href="#notes" class="nav-link">Sample Notes</a>
-                            <a href="#" class="nav-link">Courses</a>
-                            <a href="#" class="nav-link">Testimonials</a>
-                            <button onclick="openWhatsApp()" class="contact-btn">
-                                <i data-feather="message-circle" style="width: 18px; height: 18px;"></i>
-                                Contact
-                            </button>
-                        </div>
-
-                        <!-- Mobile Menu Button -->
-                        <button class="mobile-menu-btn" id="mobileMenuButton">
-                            <i data-feather="menu" style="width: 24px; height: 24px;"></i>
+                    <!-- Desktop Menu -->
+                    <div class="desktop-menu" style="display: flex; align-items: center; gap: 2rem;">
+                        <a href="#notes" class="nav-link">Sample Notes</a>
+                        <a href="#" class="nav-link">Courses</a>
+                        <a href="#" class="nav-link">Testimonials</a>
+                        <button onclick="openWhatsApp()" class="contact-btn">
+                            <i data-feather="message-circle" style="width: 18px; height: 18px;"></i>
+                            Contact
                         </button>
                     </div>
 
-                    <!-- Mobile Menu -->
-                    <div class="mobile-menu" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 50;">
-                        <div style="padding: 1.5rem;">
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
-                                <a href="/" class="logo-link">
-                                    <div style="width: 32px; height: 32px; background: linear-gradient(45deg, #3b82f6, #8b5cf6); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                        <i data-feather="book-open" style="color: white; width: 16px; height: 16px;"></i>
-                                    </div>
-                                    <span class="logo-text" style="font-size: 1.125rem;">Professor Adda</span>
-                                </a>
-                                <button id="closeMobileMenu" style="color: #374151; background: none; border: none; cursor: pointer; padding: 0.5rem;">
-                                    <i data-feather="x" style="width: 24px; height: 24px;"></i>
-                                </button>
-                            </div>
-                            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-                                <a href="#notes" class="nav-link" style="display: block; font-size: 1.125rem;">Sample Notes</a>
-                                <a href="#" class="nav-link" style="display: block; font-size: 1.125rem;">Courses</a>
-                                <a href="#" class="nav-link" style="display: block; font-size: 1.125rem;">Testimonials</a>
-                                <button onclick="openWhatsApp()" class="contact-btn" style="width: 100%; padding: 0.75rem 1rem; justify-content: center;">
-                                    <i data-feather="message-circle" style="width: 18px; height: 18px;"></i>
-                                    Contact on WhatsApp
-                                </button>
-                            </div>
+                    <!-- Mobile Menu Button -->
+                    <button class="mobile-menu-btn" id="mobileMenuButton">
+                        <i data-feather="menu" style="width: 24px; height: 24px;"></i>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu -->
+                <div class="mobile-menu" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 50;">
+                    <div style="padding: 1.5rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                            <a href="/" class="logo-link">
+                                <div class="logo-circle logo-circle-small"></div>
+                                <span class="logo-text" style="font-size: 1.125rem;">Professor Adda</span>
+                            </a>
+                            <button id="closeMobileMenu" style="color: #374151; background: none; border: none; cursor: pointer; padding: 0.5rem;">
+                                <i data-feather="x" style="width: 24px; height: 24px;"></i>
+                            </button>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                            <a href="#notes" class="nav-link" style="display: block; font-size: 1.125rem;">Sample Notes</a>
+                            <a href="#" class="nav-link" style="display: block; font-size: 1.125rem;">Courses</a>
+                            <a href="#" class="nav-link" style="display: block; font-size: 1.125rem;">Testimonials</a>
+                            <button onclick="openWhatsApp()" class="contact-btn" style="width: 100%; padding: 0.75rem 1rem; justify-content: center;">
+                                <i data-feather="message-circle" style="width: 18px; height: 18px;"></i>
+                                Contact on WhatsApp
+                            </button>
                         </div>
                     </div>
                 </div>
