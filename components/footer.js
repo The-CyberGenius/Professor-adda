@@ -50,10 +50,12 @@ class CustomFooter extends HTMLElement {
                     width: 40px;
                     height: 40px;
                     border-radius: 999px;
-                    background: linear-gradient(45deg, #3b82f6, #8b5cf6);
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
+                    /* Same logo style as navbar circle */
+                    background-image: url('/favicon.png');
+                    background-size: cover;
+                    background-position: center;
+                    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.55);
+                    flex-shrink: 0;
                 }
 
                 .brand-text {
@@ -175,9 +177,7 @@ class CustomFooter extends HTMLElement {
                         <!-- Brand -->
                         <div>
                             <div class="brand-row">
-                                <div class="brand-logo">
-                                    <i data-feather="book-open" style="width: 18px; height: 18px; color: white;"></i>
-                                </div>
+                                <div class="brand-logo"></div>
                                 <span class="brand-text">Professor Adda</span>
                             </div>
                             <p class="brand-description">
@@ -213,6 +213,7 @@ class CustomFooter extends HTMLElement {
                             <div class="contact-item">
                                 <i data-feather="phone" style="width: 14px; height: 14px;"></i>
                                 <span>+91 98765 43210</span>
+                                <span>+91 7690022111</span>
                             </div>
                             <div class="contact-item">
                                 <i data-feather="mail" style="width: 14px; height: 14px;"></i>
@@ -227,7 +228,7 @@ class CustomFooter extends HTMLElement {
 
                     <!-- Bottom Bar -->
                     <div class="bottom-bar">
-                        <p>&copy; 2024 Professor Adda. All rights reserved.</p>
+                        <p>&copy; 2025 Professor Adda. All rights reserved.</p>
                         <div class="social-links">
                             <a href="#" class="social-link" aria-label="Facebook">
                                 <i data-feather="facebook" style="width: 16px; height: 16px;"></i>
