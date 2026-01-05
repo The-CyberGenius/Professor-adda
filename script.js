@@ -1,17 +1,19 @@
 // Main JavaScript for Professor Adda
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Initialize animations
     initAnimations();
-    
+
     // Add intersection observer for scroll animations
     initScrollAnimations();
-    
+
     // Initialize feather icons
     if (typeof feather !== 'undefined') {
         feather.replace();
     }
 });
+
+
 
 function initAnimations() {
 
@@ -54,7 +56,7 @@ function openWhatsApp() {
 function downloadSample() {
     // In production, this would trigger actual file download
     const downloadUrl = '/sample-notes.pdf'; // Replace with actual file path
-    
+
     // Create temporary link for download
     const link = document.createElement('a');
     link.href = downloadUrl;
@@ -64,14 +66,7 @@ function downloadSample() {
     document.body.removeChild(link);
 }
 
-// Get Full Notes - Open link
-function openFullNotes() {
-    // PUT YOUR LINK HERE - Replace this URL with your actual link
-    const fullNotesUrl = 'https://your-link-here.com'; // 👈 यहाँ अपना link डालें
-    
-    // Open link in new tab
-    window.open(fullNotesUrl, '_blank');
-}
+
 
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -89,13 +84,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Add loading state to buttons
 document.querySelectorAll('button').forEach(button => {
-    button.addEventListener('click', function() {
+    button.addEventListener('click', function () {
         const originalText = this.innerHTML;
         this.innerHTML = '<i data-feather="loader" class="animate-spin"></i> Loading...';
         if (typeof feather !== 'undefined') {
             feather.replace();
         }
-        
+
         // Reset button text after 2 seconds (simulate loading)
         setTimeout(() => {
             this.innerHTML = originalText;

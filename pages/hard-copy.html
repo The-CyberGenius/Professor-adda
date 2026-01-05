@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Zero Cache Meta Tags -->
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Last-Modified" content="0">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Hard Copy Notes - Professor Adda</title>
+    <link rel="icon" type="image/png" href="../gemini.png">
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+</head>
+
+<body class="bg-gray-50">
+    <custom-navbar></custom-navbar>
+
+    <!-- fourm section -->
+    <section class="py-8 sm:py-12 bg-gray-200 min-h-screen">
+        <div class="container mx-auto px-4 sm:px-6 max-w-lg">
+            <h1 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8 text-gray-800">Order Hard Copy & PDF
+                Notes</h1>
+            <form id="hardCopyForm" class="bg-gray-100 rounded-xl p-6 sm:p-8 shadow-md flex flex-col gap-4 sm:gap-6">
+                <input type="text" id="name" name="name" placeholder="Your Name" required
+                    class="px-4 py-3 sm:py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 text-base">
+                <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required
+                    class="px-4 py-3 sm:py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 text-base">
+                <input type="text" id="subject" name="subject" placeholder="Subject (e.g. Paper I, Education)" required
+                    class="px-4 py-3 sm:py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 text-base">
+                <textarea id="address" name="address" placeholder="Your Address" required rows="4"
+                    class="px-4 py-3 sm:py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 text-base resize-y"></textarea>
+                <button type="button" onclick="sendWhatsAppOrder()"
+                    class="bg-green-600 text-white px-6 py-3 sm:py-3 rounded-lg font-semibold hover:bg-green-700 transition duration-300 flex items-center justify-center gap-2 min-h-[40px] text-base sm:text-sm">
+                    <i data-feather="message-circle"></i>
+                    Send Order on WhatsApp
+                </button>
+            </form>
+        </div>
+    </section>
+
+
+
+    <!-- Gallery Section -->
+    <section class="py-8 sm:py-16 bg-white overflow-hidden">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8 px-2">Student Success Stories</h2>
+
+
+
+            <!-- Horizontal Scroll Container -->
+            <div class="flex overflow-x-auto pb-8 gap-6 snap-x snap-mandatory hide-scrollbar justify-start px-4">
+
+                <!-- Card 1 -->
+                <div
+                    class="flex-shrink-0 w-64 sm:w-72 h-96 bg-gray-200 rounded-xl shadow-lg snap-center overflow-hidden hover:scale-105 transition-transform duration-300 border border-gray-200">
+                    <img src="../gallary/WhatsApp Image 2026-01-01 at 19.07.38.jpg" alt="Success Story 1"
+                        class="w-full h-full object-contain">
+                </div>
+
+                <!-- Card 2 -->
+                <div
+                    class="flex-shrink-0 w-64 sm:w-72 h-96 bg-gray-200 rounded-xl shadow-lg snap-center overflow-hidden hover:scale-105 transition-transform duration-300 border border-gray-200">
+                    <img src="../gallary/WhatsApp Image 2026-01-01 at 19.10.51.jpeg" alt="Success Story 2"
+                        class="w-full h-full object-contain">
+                </div>
+
+                <!-- Card 3 -->
+                <div
+                    class="flex-shrink-0 w-64 sm:w-72 h-96 bg-gray-200 rounded-xl shadow-lg snap-center overflow-hidden hover:scale-105 transition-transform duration-300 border border-gray-200">
+                    <img src="../gallary/31st 2025 Firsr Shift topics_page-0014.jpg" alt="Success Story 3"
+                        class="w-full h-full object-contain">
+                </div>
+
+                <!-- Card 4 -->
+                <div
+                    class="flex-shrink-0 w-64 sm:w-72 h-96 bg-gray-200 rounded-xl shadow-lg snap-center overflow-hidden hover:scale-105 transition-transform duration-300 border border-gray-200">
+                    <img src="../gallary/31st 2025 Firsr Shift topics_page-0018.jpg" alt="Success Story 4"
+                        class="w-full h-full object-contain">
+                </div>
+
+                <!-- Card 5 -->
+                <div
+                    class="flex-shrink-0 w-64 sm:w-72 h-96 bg-gray-200 rounded-xl shadow-lg snap-center overflow-hidden hover:scale-105 transition-transform duration-300 border border-gray-200">
+                    <img src="../gallary/31st 2025 Firsr Shift topics_page-0003.jpg" alt="Success Story 5"
+                        class="w-full h-full object-contain">
+                </div>
+                <!-- Card 6 -->
+                <div
+                    class="flex-shrink-0 w-64 sm:w-72 h-96 bg-gray-200 rounded-xl shadow-lg snap-center overflow-hidden hover:scale-105 transition-transform duration-300 border border-gray-200">
+                    <img src="../gallary/31st 2025 Firsr Shift topics_page-0011.jpg" alt="Success Story 5"
+                        class="w-full h-full object-contain">
+                </div>
+
+            </div>
+
+            <!-- Styled Scrollbar Helper -->
+            <style>
+                .hide-scrollbar::-webkit-scrollbar {
+                    height: 6px;
+                }
+
+                .hide-scrollbar::-webkit-scrollbar-track {
+                    background: #f1f1f1;
+                    border-radius: 4px;
+                }
+
+                .hide-scrollbar::-webkit-scrollbar-thumb {
+                    background: #cbd5e1;
+                    border-radius: 4px;
+                }
+
+                .hide-scrollbar::-webkit-scrollbar-thumb:hover {
+                    background: #94a3b8;
+                }
+            </style>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <custom-footer></custom-footer>
+    <script src="../components/navbar.js"></script>
+    <script src="../components/footer.js"></script>
+    <script src="../script.js"></script>
+    <script>
+        function sendWhatsAppOrder() {
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const subject = document.getElementById('subject').value.trim();
+            const address = document.getElementById('address').value.trim();
+            if (!name || !phone || !subject || !address) {
+                alert('Please fill all fields.');
+                return;
+            }
+            const message = `Hello! I want to order Hard Copy Notes.\n\nName: ${name}\nPhone: ${phone}\nSubject: ${subject}\nAddress: ${address}`;
+            const url = `https://wa.me/917690022111?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+        if (typeof feather !== 'undefined') { feather.replace(); }
+    </script>
+</body>
+
+</html>

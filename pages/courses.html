@@ -1,67 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <!-- Zero Cache Meta Tags -->
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Last-Modified" content="0">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Courses & Subjects - Professor Adda</title>
-    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="icon" type="image/png" href="../gemini.png">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../style.css?v=20260102">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 </head>
+
 <body class="bg-gray-50">
     <!-- Navbar -->
-    <custom-navbar></custom-navbar>
+    <custom-navbar logo-src="../gemini.png"></custom-navbar>
 
     <!-- Hero -->
-    <section class="py-16 bg-gradient-to-r from-blue-600 to-purple-700 text-white">
-        <div class="container mx-auto px-6 text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4">NET JRF Courses & Subjects</h1>
-            <!-- <p class="text-lg md:text-xl max-w-2xl mx-auto">
+    <section class="py-8 sm:py-16 bg-gradient-to-r from-blue-600 to-purple-700 text-white">
+        <div class="container mx-auto px-4 sm:px-6 text-center">
+            <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 px-2">UGC NET-SET JRF</h1>
+            <!-- <p class="text-base sm:text-lg md:text-xl max-w-2xl mx-auto px-2">
                 Choose your subject and later you can attach payment links for each course or notes package.
             </p> -->
         </div>
     </section>
 
     <!-- Courses Grid -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-6 max-w-6xl">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center"> Popular Subjects </h2>
-            <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+    <section class="py-8 sm:py-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 max-w-6xl">
+            <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 mb-6 sm:mb-8 text-center px-2"> Popular
+                Notes Packages </h2>
+            <div class="grid gap-4 sm:gap-5 md:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+
                 <!-- Subject Card 1 -->
-                <div class="bg-gray-50 rounded-2xl p-6 shadow-sm flex flex-col justify-between">
+                <div
+                    class="bg-gray-50 rounded-2xl p-4 sm:p-6 shadow-sm flex flex-col justify-between card-hover border border-gray-100 h-full">
                     <div>
-                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Paper I </h3>
-                        <p class="text-gray-600 text-sm mb-3">
-                            Complete Paper I notes with theory, practice questions and PYQs.
-                        </p>
-                        <p class="text-gray-500 text-xs">
-                            <!-- Payment link placeholder – paste your Razorpay / UPI / website link here later. -->
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-base sm:text-lg md:text-xl font-bold text-gray-900">Paper I</h3>
+                            <span
+                                class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">Popular</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                            Complete Paper I notes including UNIT WISE theory notes, UNIT WISE MCQ BANK, and (PYQs) With
+                            trend Analysis / Recorded Videos Tough Topics / Topper ToolKit.
                         </p>
                     </div>
-                    <button class="mt-5 bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-blue-700 transition duration-300">
-
-                        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_RxOfRHYMKLvzBn" async> </script> </form>
-                        
-                    </button>
+                    <div class="payment-form-container mt-4">
+                        <form>
+                            <script src="https://checkout.razorpay.com/v1/payment-button.js"
+                                data-payment_button_id="pl_RxOfRHYMKLvzBn" async> </script>
+                        </form>
+                    </div>
                 </div>
 
                 <!-- Subject Card 2 -->
-                <div class="bg-gray-50 rounded-2xl p-6 shadow-sm flex flex-col justify-between">
+                <div
+                    class="bg-gray-50 rounded-2xl p-4 sm:p-6 shadow-sm flex flex-col justify-between card-hover border border-gray-100 h-full">
                     <div>
-                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Paper II </h3>
-                        <p class="text-gray-600 text-sm mb-3">
-                            Unit-wise concise notes for Education with diagrams and shortcuts.
-                        </p>
-                        <p class="text-gray-500 text-xs">
-                            Button below can later redirect to your payment / checkout page.
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-base sm:text-lg md:text-xl font-bold text-gray-900">Paper II</h3>
+                            <span
+                                class="bg-purple-100 text-purple-800 text-xs font-semibold px-2.5 py-0.5 rounded">Detailed</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                            Complete Paper II notes including UNIT WISE theory notes, UNIT WISE MCQ BANK, and (PYQs)
+                            With
+                            trend Analysis / Recorded Videos Tough Topics / Topper ToolKit.</p>
+                    </div>
+                    <div class="payment-form-container mt-4">
+                        <form>
+                            <script src="https://checkout.razorpay.com/v1/payment-button.js"
+                                data-payment_button_id="pl_RybRdr4RvnExAv" async> </script>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Hard Copy Notes Card -->
+                <div class="bg-green-50 rounded-2xl p-4 sm:p-6 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-base sm:text-lg md:text-xl font-semibold text-gray-900 mb-2">Hard Copy Notes
+                        </h3>
+                        <p class="text-gray-600 text-xs sm:text-sm mb-3">
+                            Premium quality printed notes delivered to your doorstep. Order hard copy notes for any
+                            subject.
                         </p>
                     </div>
-                    <button class="mt-5 bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-blue-700 transition duration-300">
-                        Comming soon .. 
-                    </button>
+                    <a href="/pages/hard-copy.html"
+                        class="mt-4 bg-green-600 text-white px-4 py-2 sm:py-2 rounded-lg font-semibold text-sm hover:bg-green-700 transition duration-300 text-center min-h-[44px] flex items-center justify-center w-full">
+                        Order Hard Copy Notes
+                    </a>
                 </div>
 
                 <!-- Subject Card 3 -->
@@ -75,7 +111,8 @@
                             Replace this button link later with your Commerce course payment URL.
                         </p>
                     </div>
-                    <button class="mt-5 bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-blue-700 transition duration-300">
+                    <button
+                        class="mt-5 bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-blue-700 transition duration-300">
                         Add Payment Link Here
                     </button>
                 </div> -->
@@ -129,19 +166,21 @@
 
 
 
-                </div>
             </div>
+        </div>
         </div>
     </section>
 
     <!-- WhatsApp CTA -->
-    <section class="py-16 bg-gradient-to-br from-blue-500 to-purple-600 text-white">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold mb-4">Need a custom course or subject?</h2>
-            <p class="text-lg mb-8 max-w-2xl mx-auto">
-                Students can message you directly for special combinations, discounts, or guidance. All contact happens on WhatsApp.
+    <section class="py-8 sm:py-16 bg-gradient-to-br from-blue-500 to-purple-600 text-white">
+        <div class="container mx-auto px-4 sm:px-6 text-center">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-4 px-2">Need a custom course or subject?</h2>
+            <p class="text-base sm:text-lg mb-6 sm:mb-8 max-w-2xl mx-auto px-2">
+                Students can message you directly for special combinations, discounts, or guidance. All contact happens
+                on WhatsApp.
             </p>
-            <button onclick="openWhatsApp()" class="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition duration-300 shadow-lg text-lg inline-flex items-center justify-center gap-3">
+            <button onclick="openWhatsApp()"
+                class="bg-white text-blue-600 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:bg-blue-50 transition duration-300 shadow-lg text-sm sm:text-base md:text-lg inline-flex items-center justify-center gap-2 sm:gap-3 min-h-[44px]">
                 <i data-feather="message-circle"></i>
                 Chat on WhatsApp
             </button>
@@ -156,13 +195,12 @@
     <script src="../components/footer.js"></script>
     <script src="../script.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             if (typeof feather !== 'undefined') {
                 feather.replace();
             }
         });
     </script>
 </body>
+
 </html>
-
-
