@@ -1,209 +1,256 @@
 class CustomNavbar extends HTMLElement {
+    constructor() {
+        super();
+        this.handleScroll = this.handleScroll.bind(this);
+    }
+
     connectedCallback() {
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.innerHTML = `
             <style>
-                :host {
-                    display: block;
-                    width: 100%;
-                    position: sticky;
-                    top: 0;
-                    z-index: 1000;
+            :host {
+                display: block;
+                width: 100%;
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+            }
+            
+            .navbar {
+                padding: 0.75rem 1.25rem;
+                background: transparent;
+                backdrop-filter: blur(16px);
+                transition: all 0.3s ease;
+                position: relative;
+            }
+            .navbar-inner {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0.6rem 1.4rem;
+                border-radius: 100px;
+                background: linear-gradient(90deg, #2563eb, #7c3aed);
+                /* Subtle, darker shadow for soft depth */
+                box-shadow: 0 10px 25px rgba(15, 23, 42, 0.35);
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                transition: box-shadow 0.3s ease, transform 0.3s ease, background 0.3s ease;
+            }
+            .navbar.scrolled .navbar-inner {
+                box-shadow: 0 8px 18px rgba(15, 23, 42, 0.5);
+                transform: translateY(-2px);
+                background: linear-gradient(90deg, #1d4ed8, #6d28d9);
+            }
+            .logo-link {
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            .logo-circle {
+                width: 40px;
+                height: 40px;
+                border-radius: 30%;
+                background: linear-gradient(135deg, #f8fafc 60%, #e0e7ff 100%);
+                border: 2px solid #c7d2fe;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 6px 18px #6366f133, 0 1.5px 4px #a5b4fc44;
+                flex-shrink: 0; 
+            }
+            .logo-circle svg {
+                transition: all 0.3s ease-in-out;
+                cursor: pointer;
+                filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.1));
+            }
+            .logo-circle svg:hover {
+                transform: translateY(-3px) scale(1.05);
+                filter: drop-shadow(0px 8px 15px rgba(99, 102, 241, 0.4));
+            }
+            /* Tassel animation */
+            .logo-circle svg:hover circle {
+                fill: #f59e0b; /* Brighten gold on hover */
+            }
+            .logo-text {
+                font-size: 1.25rem;
+                font-weight: 700;
+                background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                /* Slight bump/3D effect */
+                text-shadow:
+                0 1px 0 rgba(255, 255, 255, 0.6),
+                0 4px 10px rgba(15, 23, 42, 0.35);
+            }
+            .nav-link {
+                position: relative;
+                color: #e5e7eb;
+                font-weight: 500;
+                text-decoration: none;
+                padding: 0.5rem 0;
+                transition: all 0.3s ease;
+                display: inline-block;
+            }
+            .nav-link:focus-visible {
+                outline: 2px solid rgba(255, 255, 255, 0.8);
+                outline-offset: 4px;
+                border-radius: 4px;
+            }
+            .nav-link:hover {
+                color: #ffffff;
+                transform: translateY(-1px);
+            }
+            .nav-link::after {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 2px;
+                bottom: 0;
+                left: 0;
+                background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+                transition: width 0.3s ease;
+                border-radius: 2px;
+            }
+            .nav-link:hover::after {
+                width: 100%;
+            }
+
+            /* Contact button styles */
+            .contact-btn {
+                background: linear-gradient(135deg, #e2ece5ff, #0a2815ff);
+                color: white;
+                padding: 0.55rem 1.25rem;
+                border-radius: 0.5rem;
+                font-weight: 600;
+                border: none;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                transition: all 0.3s ease;
+                text-decoration: none;
+            }
+            .contact-btn:hover {
+                background: linear-gradient(135deg, #22c55e, #15803d);
+                transform: translateY(1px);
+                box-shadow: 0 8px 22px rgba(16, 185, 129, 0.45);
+            }
+
+            /* Mobile Get Button */
+            .mobile-get-btn {
+                display: none;
+                background: rgba(255, 255, 255, 0.25);
+                color: #ffffff;
+                padding: 0.6rem 1.25rem;
+                border-radius: 0.5rem;
+                font-weight: 700;
+                font-size: 0.95rem;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                border: 1px solid rgba(255, 255, 255, 0.4);
+                backdrop-filter: blur(10px);
+                white-space: nowrap;
+                min-width: 60px;
+                text-align: center;
+            }
+            
+            .mobile-get-btn:hover {
+                background: rgba(255, 255, 255, 0.35);
+                transform: translateY(-2px);
+                box-shadow: 0 6px 16px rgba(255, 255, 255, 0.3);
+                border-color: rgba(255, 255, 255, 0.5);
+            }
+            
+            .mobile-get-btn:active {
+                transform: translateY(0);
+                background: rgba(255, 255, 255, 0.4);
+            }
+            
+            .mobile-get-btn:focus-visible {
+                outline: 2px solid rgba(255, 255, 255, 0.9);
+                outline-offset: 2px;
+            }
+
+            @media (max-width: 768px) {
+                .desktop-menu {
+                    display: none !important;
                 }
-                .navbar {
-                    background: rgba(255, 255, 255, 0.95);
-                    backdrop-filter: blur(10px);
-                    border-bottom: 1px solid rgba(229, 231, 235, 0.5);
-                    transition: all 0.3s ease;
-                }
-                .navbar.scrolled {
-                    background: rgba(255, 255, 255, 0.98);
-                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-                }
-                .logo-link {
-                    text-decoration: none;
-                    display: flex;
-                    align-items: center;
-                    gap: 0.5rem;
-                }
-                .logo-text {
-                    font-size: 1.25rem;
-                    font-weight: 700;
-                    background: linear-gradient(45deg, #3b82f6, #8b5cf6);
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                    background-clip: text;
-                }
-                .nav-link {
-                    position: relative;
-                    color: #374151;
-                    font-weight: 500;
-                    text-decoration: none;
-                    padding: 0.5rem 0;
-                    transition: all 0.3s ease;
+                .mobile-get-btn {
                     display: inline-block;
                 }
-                .nav-link:hover {
-                    color: #3b82f6;
-                    transform: translateY(-2px);
-                }
-                .nav-link::after {
-                    content: '';
-                    position: absolute;
-                    width: 0;
-                    height: 2px;
-                    bottom: 0;
-                    left: 0;
-                    background: linear-gradient(45deg, #3b82f6, #8b5cf6);
-                    transition: width 0.3s ease;
-                    border-radius: 2px;
-                }
-                .nav-link:hover::after {
-                    width: 100%;
-                }
-                .contact-btn {
-                    background: #10b981;
-                    color: white;
-                    padding: 0.5rem 1rem;
-                    border-radius: 0.5rem;
-                    font-weight: 600;
-                    border: none;
-                    cursor: pointer;
-                    display: flex;
-                    align-items: center;
-                    gap: 0.5rem;
-                    transition: all 0.3s ease;
-                    text-decoration: none;
-                }
-                .contact-btn:hover {
-                    background: #059669;
-                    transform: translateY(-2px);
-                    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
-                }
-                .mobile-menu-btn {
-                    background: none;
-                    border: none;
-                    color: #374151;
-                    cursor: pointer;
-                    padding: 0.5rem;
-                    display: none;
-                }
-                .mobile-menu-btn:hover {
-                    color: #3b82f6;
-                }
-                .mobile-menu {
-                    transition: all 0.3s ease;
-                    transform: translateX(-100%);
-                }
-                .mobile-menu.open {
-                    transform: translateX(0);
-                }
-                @media (max-width: 768px) {
-                    .desktop-menu {
-                        display: none !important;
-                    }
-                    .mobile-menu-btn {
-                        display: block;
-                    }
-                }
+            }
+
             </style>
             <nav class="navbar">
-                <div style="max-width: 1200px; margin: 0 auto; padding: 1rem 1.5rem;">
-                    <div style="display: flex; align-items: center; justify-content: space-between;">
-                        <!-- Logo -->
-                        <a href="/" class="logo-link">
-                            <div style="width: 40px; height: 40px; background: linear-gradient(45deg, #3b82f6, #8b5cf6); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                <i data-feather="book-open" style="color: white; width: 20px; height: 20px;"></i>
+            <div class="navbar-inner">
+                <!-- Logo -->
+                <a href="/" class="logo-link">
+                            <div class="logo-circle">
+                                <!-- 
+                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                <linearGradient id="profGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#6366f1" />
+                                <stop offset="100%" stop-color="#a855f7" />
+                                </linearGradient>
+                                </defs>
+                                <path d="M24 40C18 40 8 36 8 36V16C8 16 18 20 24 20C30 20 40 16 40 16V36C40 36 30 40 24 40Z" fill="url(#profGrad)" />
+                                <path d="M24 8L42 16L24 24L6 16L24 8Z" fill="#312e81" />
+                                <path d="M42 16V26" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" />
+                                <circle cx="42" cy="28" r="2" fill="#fbbf24" />
+                                <rect x="23" y="20" width="2" height="20" fill="#ffffff" fill-opacity="0.3" />
+                                </svg> 
+                                -->
+                                <img src="${this.getAttribute('logo-src') || '/gemini.png'}" alt="Professor Adda Logo" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
                             </div>
-                            <span class="logo-text">Professor Adda</span>
-                        </a>
+                <span class="logo-text">Professor Adda</span>
+                </a>
 
-                        <!-- Desktop Menu -->
-                        <div class="desktop-menu" style="display: flex; align-items: center; gap: 2rem;">
-                            <a href="#notes" class="nav-link">Sample Notes</a>
-                            <a href="#" class="nav-link">Courses</a>
-                            <a href="#" class="nav-link">Testimonials</a>
-                            <button onclick="openWhatsApp()" class="contact-btn">
-                                <i data-feather="message-circle" style="width: 18px; height: 18px;"></i>
-                                Contact
-                            </button>
-                        </div>
-
-                        <!-- Mobile Menu Button -->
-                        <button class="mobile-menu-btn" id="mobileMenuButton">
-                            <i data-feather="menu" style="width: 24px; height: 24px;"></i>
-                        </button>
+                <!-- Desktop Menu -->
+                    <div class="desktop-menu" style="display: flex; align-items: center; gap: 2rem;">
+                    <a href="/pages/courses.html" class="nav-link">Get Premium Notes</a>
+                        <a href="/pages/sample-notes.html" class="nav-link">Sample Notes</a>
+                        <a href="/pages/faq.html" class="nav-link">FAQ</a>
                     </div>
 
-                    <!-- Mobile Menu -->
-                    <div class="mobile-menu" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 50;">
-                        <div style="padding: 1.5rem;">
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
-                                <a href="/" class="logo-link">
-                                    <div style="width: 32px; height: 32px; background: linear-gradient(45deg, #3b82f6, #8b5cf6); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                        <i data-feather="book-open" style="color: white; width: 16px; height: 16px;"></i>
-                                    </div>
-                                    <span class="logo-text" style="font-size: 1.125rem;">Professor Adda</span>
-                                </a>
-                                <button id="closeMobileMenu" style="color: #374151; background: none; border: none; cursor: pointer; padding: 0.5rem;">
-                                    <i data-feather="x" style="width: 24px; height: 24px;"></i>
-                                </button>
-                            </div>
-                            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-                                <a href="#notes" class="nav-link" style="display: block; font-size: 1.125rem;">Sample Notes</a>
-                                <a href="#" class="nav-link" style="display: block; font-size: 1.125rem;">Courses</a>
-                                <a href="#" class="nav-link" style="display: block; font-size: 1.125rem;">Testimonials</a>
-                                <button onclick="openWhatsApp()" class="contact-btn" style="width: 100%; padding: 0.75rem 1rem; justify-content: center;">
-                                    <i data-feather="message-circle" style="width: 18px; height: 18px;"></i>
-                                    Contact on WhatsApp
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!-- Mobile Get Button -->
+                <a href="/pages/courses.html" class="mobile-get-btn" aria-label="Get Premium Notes">Get</a>
+            </div>
             </nav>
-
-            <script>
-                // Mobile menu functionality
-                const mobileMenuButton = this.shadowRoot.getElementById('mobileMenuButton');
-                const closeMobileMenu = this.shadowRoot.getElementById('closeMobileMenu');
-                const mobileMenu = this.shadowRoot.querySelector('.mobile-menu');
-
-                mobileMenuButton.addEventListener('click', () => {
-                    mobileMenu.classList.add('open');
-                    document.body.style.overflow = 'hidden';
-                });
-
-                closeMobileMenu.addEventListener('click', () => {
-                    mobileMenu.classList.remove('open');
-                    document.body.style.overflow = '';
-                });
-
-                // Close mobile menu when clicking on links
-                this.shadowRoot.querySelectorAll('.mobile-menu a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        mobileMenu.classList.remove('open');
-                        document.body.style.overflow = '';
-                    });
-                });
-
-                // Navbar scroll effect
-                window.addEventListener('scroll', () => {
-                    const navbar = this.shadowRoot.querySelector('.navbar');
-                    if (window.scrollY > 50) {
-                        navbar.classList.add('scrolled');
-                    } else {
-                        navbar.classList.remove('scrolled');
-                    }
-                });
-
-                // Initialize feather icons in shadow DOM
-                if (typeof feather !== 'undefined') {
-                    feather.replace();
-                }
-            </script>
         `;
+
+        // Initialize functionality
+        this.init();
     }
+
+    disconnectedCallback() {
+        window.removeEventListener('scroll', this.handleScroll);
+    }
+
+    init() {
+        // Navbar scroll effect
+        window.addEventListener('scroll', this.handleScroll);
+
+        // Initialize feather icons
+        if (typeof feather !== 'undefined') {
+            feather.replace();
+        }
+    }
+
+    handleScroll() {
+        const navbar = this.shadowRoot.querySelector('.navbar');
+        if (!navbar) return;
+
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    }
+
+
 }
 
 customElements.define('custom-navbar', CustomNavbar);

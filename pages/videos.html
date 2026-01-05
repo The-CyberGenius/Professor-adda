@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Videos - Professor Adda</title>
+    <link rel="icon" type="image/png" href="../favicon.png">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- External Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Navbar -->
+    <custom-navbar></custom-navbar>
+
+    <!-- Hero Section -->
+    <section class="py-8 sm:py-16 bg-white min-h-screen">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h1 class="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 text-gray-800">Professor's Free Videos
+            </h1>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-6xl mx-auto">
+                <!-- Video 1 -->
+                <div class="bg-gray-50 rounded-xl overflow-hidden shadow-lg border border-gray-100 group hover:shadow-xl transition-all duration-300 cursor-pointer"
+                    onclick="openVideo('../videos/रिसर्च_एप्टीट्यूड_में_महारत.mp4', 'रिसर्च एप्टीट्यूड में महारत')">
+                    <div
+                        class="relative w-full aspect-video bg-gray-900 flex items-center justify-center group-hover:bg-gray-800 transition-colors">
+                        <!-- Play Button Icon -->
+                        <div
+                            class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform">
+                            <i data-feather="play" class="text-white w-8 h-8 fill-current"></i>
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-black/70 text-white text-xs px-2 py-1 rounded">
+                            Click to Watch
+                        </div>
+                    </div>
+                    <div class="p-4 sm:p-5">
+                        <h3 class="text-lg sm:text-xl font-semibold text-gray-800 mb-2">रिसर्च एप्टीट्यूड में महारत</h3>
+                        <p class="text-gray-600 text-sm">Target JRF: Research Aptitude Masterclass</p>
+                    </div>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="bg-gray-50 rounded-xl overflow-hidden shadow-lg border border-gray-100 group hover:shadow-xl transition-all duration-300 cursor-pointer"
+                    onclick="openVideo('../videos/शिक्षण_योग्यता__शिक्षक_की_यात्रा.mp4', 'शिक्षण योग्यता: शिक्षक की यात्रा')">
+                    <div
+                        class="relative w-full aspect-video bg-gray-900 flex items-center justify-center group-hover:bg-gray-800 transition-colors">
+                        <!-- Play Button Icon -->
+                        <div
+                            class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform">
+                            <i data-feather="play" class="text-white w-8 h-8 fill-current"></i>
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-black/70 text-white text-xs px-2 py-1 rounded">
+                            Click to Watch
+                        </div>
+                    </div>
+                    <div class="p-4 sm:p-5">
+                        <h3 class="text-lg sm:text-xl font-semibold text-gray-800 mb-2">शिक्षण योग्यता: शिक्षक की यात्रा
+                        </h3>
+                        <p class="text-gray-600 text-sm">Target JRF: Teaching Aptitude Journey</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Modal -->
+            <div id="videoModal"
+                class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 backdrop-blur-sm p-4">
+                <div class="relative w-full max-w-4xl bg-black rounded-xl overflow-hidden shadow-2xl">
+                    <!-- Header -->
+                    <div
+                        class="flex items-center justify-between p-4 bg-gray-900/50 absolute top-0 left-0 right-0 z-10">
+                        <h3 id="modalTitle" class="text-white font-medium text-lg truncate pr-8">Video Title</h3>
+                        <button onclick="closeVideo()"
+                            class="text-white/80 hover:text-white bg-black/50 hover:bg-black/80 rounded-full p-2 transition-colors">
+                            <i data-feather="x" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+
+                    <!-- Player -->
+                    <video id="modalPlayer" class="w-full aspect-video" controls controlsList="nodownload"
+                        oncontextmenu="return false;">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <p class="text-gray-600 mb-4">Want full access to all video lectures?</p>
+                <a href="courses.html"
+                    class="inline-flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-700 hover:underline">
+                    Check Premium Courses <i data-feather="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <custom-footer></custom-footer>
+
+    <!-- Scripts -->
+    <script src="../components/navbar.js"></script>
+    <script src="../components/footer.js"></script>
+    <script>
+        // Initialize Feather Icons
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof feather !== 'undefined') {
+                feather.replace();
+            }
+        });
+
+        // Video Modal Logic
+        const modal = document.getElementById('videoModal');
+        const player = document.getElementById('modalPlayer');
+        const modalTitle = document.getElementById('modalTitle');
+
+        function openVideo(src, title) {
+            player.src = src;
+            modalTitle.textContent = title;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            // Check if feather icons need re-rendering in modal
+            if (typeof feather !== 'undefined') feather.replace();
+            player.play().catch(e => console.log('Autoplay blocked:', e));
+        }
+
+        function closeVideo() {
+            player.pause();
+            player.src = ""; // Clear source to stop buffering
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Close modal on click outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeVideo();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeVideo();
+            }
+        });
+    </script>
+</body>
+
+</html>

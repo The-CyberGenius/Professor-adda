@@ -31,7 +31,13 @@ professor adda website/
 └── sample-notes.pdf   # Sample notes file
 ```
 
+|Note:|
+|-----|
+|This is a static website and does not require a backend server.|
+builded/coded by Shiva Prajapat 
+
 ## Setup & Deployment
+Professoradda.com hosted on Hostinger Basic plan  
 
 ### Local Development
 

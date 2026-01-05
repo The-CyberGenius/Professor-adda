@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Language - Professor Adda</title>
+    <link rel="icon" type="image/png" href="../gemini.png">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+</head>
+
+<body class="bg-gray-50 flex flex-col min-h-screen">
+    <!-- Navbar -->
+    <custom-navbar></custom-navbar>
+
+    <!-- Content -->
+    <section class="flex-grow flex items-center justify-center py-16 px-4">
+        <div class="max-w-4xl w-full text-center">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-6">Choose Your Language</h1>
+            <p class="text-lg text-gray-600 mb-12">Select your preferred medium for notes.</p>
+
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center max-w-2xl mx-auto">
+                <!-- Hindi Button -->
+                <a href="sample-notes.html"
+                    class="bg-blue-600 text-white text-xl font-bold py-4 px-10 rounded-lg shadow-lg hover:bg-blue-700 transition duration-300 w-full sm:w-auto min-w-[200px]">
+                    Hindi Medium
+                </a>
+
+                <!-- English Button -->
+                <a href="english-notes.html"
+                    class="bg-indigo-600 text-white text-xl font-bold py-4 px-10 rounded-lg shadow-lg hover:bg-indigo-700 transition duration-300 w-full sm:w-auto min-w-[200px]">
+                    English Medium
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <custom-footer></custom-footer>
+
+    <!-- Scripts -->
+    <script src="../components/navbar.js"></script>
+    <script src="../components/footer.js"></script>
+    <script src="../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (typeof feather !== 'undefined') {
+                feather.replace();
+            }
+        });
+    </script>
+</body>
+
+</html>

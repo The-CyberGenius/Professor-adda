@@ -50,10 +50,14 @@ class CustomFooter extends HTMLElement {
                     width: 40px;
                     height: 40px;
                     border-radius: 999px;
-                    background: linear-gradient(45deg, #3b82f6, #8b5cf6);
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
+                    /* Same logo style as navbar circle */
+                    background-image: url('/favicon.png');
+                    // background-image: url('/gemini.png');
+                    
+                    background-size: cover;
+                    background-position: center;
+                    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.55);
+                    flex-shrink: 0;
                 }
 
                 .brand-text {
@@ -86,6 +90,13 @@ class CustomFooter extends HTMLElement {
                     color: #60a5fa;
                     transform: translateX(2px);
                 }
+                
+                .footer-link:focus-visible {
+                    outline: 2px solid #60a5fa;
+                    outline-offset: 2px;
+                    border-radius: 4px;
+                    color: #60a5fa;
+                }
 
                 .contact-item {
                     display: flex;
@@ -93,6 +104,10 @@ class CustomFooter extends HTMLElement {
                     gap: 0.5rem;
                     font-size: 0.9rem;
                     color: #9ca3af;
+                }
+
+                .contact-item:hover {
+                    color: #60a5fa;
                 }
 
                 .contact-item + .contact-item {
@@ -120,6 +135,26 @@ class CustomFooter extends HTMLElement {
                     transform: translateY(-1px);
                     box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35);
                 }
+                
+                .whatsapp-btn:focus-visible {
+                    outline: 2px solid #10b981;
+                    outline-offset: 2px;
+                    border-radius: 4px;
+                }
+                
+                /* Prevent horizontal scroll from contact links */
+                a[href^="tel:"], a[href^="mailto:"] {
+                    display: inline-flex;
+                    max-width: 100%;
+                    word-break: break-word;
+                }
+                
+                a[href^="tel:"]:focus-visible,
+                a[href^="mailto:"]:focus-visible {
+                    outline: 2px solid #60a5fa;
+                    outline-offset: 2px;
+                    border-radius: 4px;
+                }
 
                 .bottom-bar {
                     border-top: 1px solid #374151;
@@ -140,17 +175,62 @@ class CustomFooter extends HTMLElement {
                 }
 
                 .social-link {
-                    color: #6b7280;
+                    color: white; /* Default white icon */
                     text-decoration: none;
-                    transition: color 0.2s ease, transform 0.2s ease;
+                    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
                     display: inline-flex;
                     align-items: center;
                     justify-content: center;
+                    width: 48px; /* Increased size */
+                    height: 48px; /* Increased size */
+                    border-radius: 50%;
+                    background: rgba(255, 255, 255, 0.1); /* Default glossy bg */
+                    backdrop-filter: blur(4px);
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
                 }
 
                 .social-link:hover {
-                    color: #f9fafb;
-                    transform: translateY(-1px);
+                    transform: translateY(-4px) scale(1.1);
+                    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+                    border-color: rgba(255, 255, 255, 0.3);
+                }
+
+                /* Telegram Specific Style */
+                .social-link.telegram {
+                    background: linear-gradient(135deg, #229ED9, #0088cc);
+                    box-shadow: 0 4px 10px rgba(34, 158, 217, 0.4);
+                }
+                .social-link.telegram:hover {
+                    box-shadow: 0 8px 20px rgba(34, 158, 217, 0.6);
+                    background: linear-gradient(135deg, #28a8e9, #0099e6);
+                }
+
+                /* WhatsApp Specific Style */
+                .social-link.whatsapp {
+                    background: linear-gradient(135deg, #25D366, #128C7E);
+                    box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4);
+                }
+                .social-link.whatsapp:hover {
+                    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.6);
+                    background: linear-gradient(135deg, #4ce485, #1bd78d);
+                }
+
+                /* Instagram Specific Style */
+                .social-link.instagram {
+                    background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+                    box-shadow: 0 4px 10px rgba(225, 48, 108, 0.4);
+                }
+                .social-link.instagram:hover {
+                    box-shadow: 0 8px 20px rgba(225, 48, 108, 0.6);
+                    background: linear-gradient(135deg, #a95dc0, #fd4d4d, #ffcf85);
+                }
+
+                .social-link svg {
+                    width: 24px;
+                    height: 24px;
+                    stroke-width: 2.5px;
+                    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.2));
                 }
 
                 @media (max-width: 900px) {
@@ -175,9 +255,7 @@ class CustomFooter extends HTMLElement {
                         <!-- Brand -->
                         <div>
                             <div class="brand-row">
-                                <div class="brand-logo">
-                                    <i data-feather="book-open" style="width: 18px; height: 18px; color: white;"></i>
-                                </div>
+                                <div class="brand-logo"></div>
                                 <span class="brand-text">Professor Adda</span>
                             </div>
                             <p class="brand-description">
@@ -186,74 +264,75 @@ class CustomFooter extends HTMLElement {
                         </div>
 
                         <!-- Quick Links -->
+                        
                         <div>
                             <h4 class="footer-heading">Quick Links</h4>
                             <ul class="footer-list">
-                                <li><a href="#notes" class="footer-link">Sample Notes</a></li>
-                                <li><a href="#" class="footer-link">All Courses</a></li>
-                                <li><a href="#" class="footer-link">Testimonials</a></li>
-                                <li><a href="#" class="footer-link">FAQs</a></li>
+                                <li><a href="/pages/sample-notes.html" class="footer-link">Sample Notes</a></li>
+                                <li><a href="/pages/courses.html" class="footer-link">All Courses</a></li>
+                                <li><a href="/pages/faq.html" class="footer-link">FAQs</a></li>
                             </ul>
                         </div>
-
                         <!-- Products -->
                         <div>
                             <h4 class="footer-heading">Our Products</h4>
                             <ul class="footer-list">
-                                <li><a href="#" class="footer-link">PDF Notes</a></li>
-                                <li><a href="#" class="footer-link">Hard Copy Notes</a></li>
-                                <li><a href="#" class="footer-link">Study Material</a></li>
-                                <li><a href="#" class="footer-link">Practice Sets</a></li>
+                                <li><a href="/pages/select-language.html" class="footer-link">PDF Notes</a></li>
+                                <li><a href="/pages/hard-copy.html" class="footer-link">Hard Copy Notes</a></li>
+                                <li><a href="/pages/update-soon.html" class="footer-link">Study Material</a></li>
+                                <li><a href="/pages/practice-set.html" class="footer-link">Practice Sets</a></li>
                             </ul>
                         </div>
-
+                        
                         <!-- Contact -->
                         <div>
-                            <h4 class="footer-heading">Contact Info</h4>
-                            <div class="contact-item">
-                                <i data-feather="phone" style="width: 14px; height: 14px;"></i>
-                                <span>+91 98765 43210</span>
+                            <h4 class="footer-heading">Contact Info / support</h4>
+                            
+                            <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 0.75rem;">
+                                
+                                <a href="tel:+919216228788" style="display: flex; align-items: center; gap: 0.6rem; color: inherit; text-decoration: none;">
+                                    <i data-feather="phone" style="width: 16px; height: 16px;"></i>
+                                    <span>+91 92162 28788</span>
+                                </a>
+                                <a href="tel:+917690022111" style="display: flex; align-items: center; gap: 0.6rem; color: inherit; text-decoration: none;">
+                                    <i data-feather="phone" style="width: 16px; height: 16px;"></i>
+                                    <span>+91 76900 22111</span>
+                                </a>
+                                <a href="mailto:notes@professoradda.com" style="display: flex; align-items: center; gap: 0.6rem; color: inherit; text-decoration: none;">
+                                    <i data-feather="mail" style="width: 16px; height: 16px;"></i>
+                                    <span>notes@professoradda.com</span>
+                                </a>
                             </div>
-                            <div class="contact-item">
-                                <i data-feather="mail" style="width: 14px; height: 14px;"></i>
-                                <span>contact@professordda.com</span>
-                            </div>
-                            <button onclick="openWhatsApp()" class="whatsapp-btn">
-                                <i data-feather="message-circle" style="width: 14px; height: 14px;"></i>
-                                Message on WhatsApp
-                            </button>
                         </div>
                     </div>
 
-                    <!-- Bottom Bar -->
                     <div class="bottom-bar">
-                        <p>&copy; 2024 Professor Adda. All rights reserved.</p>
+                        <p>&copy; 2025 Professor Adda. All rights reserved.</p>
                         <div class="social-links">
-                            <a href="#" class="social-link" aria-label="Facebook">
-                                <i data-feather="facebook" style="width: 16px; height: 16px;"></i>
+                            <!-- Telegram -->
+                            <a href="https://t.me/ugcnet_notes_pdf" target="_blank" class="social-link telegram" aria-label="Telegram">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" class="feather feather-send"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
                             </a>
-                            <a href="#" class="social-link" aria-label="Twitter">
-                                <i data-feather="twitter" style="width: 16px; height: 16px;"></i>
+                            
+                            <!-- WhatsApp Channel -->
+                            <a href="https://whatsapp.com/channel/0029Va9grq796H4bJGPDyd3f" target="_blank" class="social-link whatsapp" aria-label="WhatsApp">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-circle"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
                             </a>
-                            <a href="#" class="social-link" aria-label="Instagram">
-                                <i data-feather="instagram" style="width: 16px; height: 16px;"></i>
-                            </a>
-                            <a href="#" class="social-link" aria-label="YouTube">
-                                <i data-feather="youtube" style="width: 16px; height: 16px;"></i>
+
+                            <!-- Instagram -->
+                            <a href="https://www.instagram.com/netpaper1_professorsadda?igsh=b253cnlwNzN3N3lj" target="_blank" class="social-link instagram" aria-label="Instagram">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                             </a>
                         </div>
                     </div>
                 </div>
             </footer>
-
-            <script>
-                // Initialize feather icons in footer
-                if (typeof feather !== 'undefined') {
-                    feather.replace();
-                }
-            </script>
         `;
+
+        // Initialize feather icons in footer
+        if (typeof feather !== 'undefined') {
+            feather.replace();
+        }
     }
 }
-
 customElements.define('custom-footer', CustomFooter);
